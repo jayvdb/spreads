@@ -236,9 +236,10 @@ class _classmethod(classmethod):  # noqa
     def __init__(self, func):
         super(_classmethod, self).__init__(func)
         isabstractmethod = getattr(func, '__isabstractmethod__', False)
-        if isabstractmethod:
-            self.__isabstractmethod__ = isabstractmethod
+        #if isabstractmethod:
+        #    self.__isabstractmethod__ = isabstractmethod
 
+"""
     def __get__(self, instance, owner):
         result = _instancemethodwrapper(super(_classmethod, self)
                                         .__get__(instance, owner))
@@ -249,6 +250,7 @@ class _classmethod(classmethod):  # noqa
             if abstractmethods and result.__name__ in abstractmethods:
                 result.__dontcall__ = True
         return result
+"""
 
 
 class abstractclassmethod(_classmethod):  # noqa
