@@ -37,7 +37,7 @@ from tornado.ioloop import IOLoop
 from tornado.web import RequestHandler, asynchronous, stream_request_body
 from tornado.websocket import WebSocketHandler as TornadoWebSocketHandler
 
-import util
+from spreadsplug.web import util
 from spreads.workflow import Workflow
 
 signals = blinker.Namespace()
