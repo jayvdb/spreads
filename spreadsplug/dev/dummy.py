@@ -104,4 +104,4 @@ class DummyDevice(DeviceDriver):
         pass
 
     def show_textbox(self, msg):
-        print "DISPLAY ON {0} device:\n{1}".format(self.target_page, msg)
+        print("DISPLAY ON {0} device:\n{1}".format(self.target_page, msg))

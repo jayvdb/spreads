@@ -23,11 +23,15 @@ from __future__ import unicode_literals
 
 import copy
 import logging
+import sys
 
 import spreads.vendor.confit as confit
 from pathlib import Path
 
 import spreads.util as util
+
+if sys.version_info[0] == 3:
+    unicode = str
 
 
 class OptionTemplate(object):

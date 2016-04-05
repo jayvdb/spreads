@@ -27,6 +27,8 @@ import logging
 import shutil
 import threading
 import uuid
+import sys
+
 from datetime import datetime
 
 import concurrent.futures as concfut
@@ -47,6 +49,10 @@ try:
 except ImportError:
     HAS_JPEGTRAN = False
     from PIL import Image
+
+if sys.version_info[0] == 3:
+    unicode = str
+    basestring = (str, )
 
 signals = Namespace()
 on_created = signals.signal('workflow:created', doc="""\

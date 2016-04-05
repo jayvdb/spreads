@@ -25,11 +25,16 @@ field of the same name): `creator`, `identifier`, `date`, `language`.
 
 from __future__ import division, unicode_literals
 
+import sys
+
 from collections import MutableMapping
 
 import isbnlib
 from isbnlib import _goom as googlebooks
 from spreads.vendor.bagit import BagInfo
+
+if sys.version_info[0] == 3:
+    unicode = str
 
 
 def _format_isbnlib(isbnrecord):

@@ -55,6 +55,10 @@ else:
             termios.tcsetattr(fd, termios.TCSADRAIN, old)
         return char
 
+if sys.version_info[0] == 3:
+    raw_input = input
+    unicode = str
+
 
 def draw_progress(progress):
     """ Draw a progress bar to stdout.

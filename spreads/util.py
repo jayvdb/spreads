@@ -30,6 +30,8 @@ import pkg_resources
 import platform
 import re
 import subprocess
+import sys
+
 from unicodedata import normalize
 
 import blinker
@@ -38,6 +40,10 @@ import psutil
 import roman
 from colorama import Fore, Back, Style
 from pathlib import Path
+
+if sys.version_info[0] == 3:
+    unicode = str
+    basestring = (str, )
 
 
 class SpreadsException(Exception):

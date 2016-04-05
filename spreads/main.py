@@ -37,6 +37,10 @@ import spreads.plugin as plugin
 import spreads.util as util
 from spreads.config import Configuration
 
+if sys.version_info[0] == 3:
+    unicode = str
+    basestring = (str, )
+
 
 def add_argument_from_template(extname, key, template, parser, current_val):
     """ Add option from `template` to `parser` under the name `key`.

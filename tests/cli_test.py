@@ -102,7 +102,7 @@ def test_configure(config, mock_input, mock_getch):
 
     TestDriver.num_devices = 2
 
-    print config['plugins'].get()
+    print(config['plugins'].get())
     assert config['driver'].get() == 'testdriver'
     assert config['plugins'].get() == ["test_process", "test_output"]
     assert config["device"]["focus_distance"].get() == 300

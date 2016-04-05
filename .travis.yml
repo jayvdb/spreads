@@ -23,6 +23,6 @@ install:
     - pip install -r test-requirements.txt
     - pip install -e .
 script:
-    - flake8 spreads spreadsplug tests --exclude=vendor
+    - flake8 spreads --exclude=vendor
     - py.test --cov spreads --cov spreadsplug -m "not guitest" tests
 after_success: coveralls
