@@ -20,12 +20,17 @@ import json
 import logging
 import os
 import uuid
+import sys
 import tarfile
 import tempfile
 import threading
 import time
 import zipfile
-import Queue
+
+if sys.version_info[0] == 3:
+    import queue as Queue
+else:
+    import Queue
 
 import blinker
 from tornado.ioloop import IOLoop
