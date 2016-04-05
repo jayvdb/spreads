@@ -1,3 +1,5 @@
+import sys
+
 from itertools import chain, repeat
 
 import pytest
@@ -12,8 +14,12 @@ from .conftest import TestDriver
 
 @pytest.yield_fixture
 def mock_input():
-    with patch('__builtin__.raw_input') as mock_input:
-        yield mock_input
+    if sys.version_info[0] == 2:
+        with patch('__builtin__.raw_input') as mock_input:
+            yield mock_input
+    else:
+        with patch('__builtins__.input') as mock_input:
+            yield mock_input
 
 
 @pytest.yield_fixture
