@@ -1,30 +1,50 @@
 language: python
-python:
-  - "2.7_with_system_site_packages"
-addons:
-  apt:
-    packages:
-      - python-tk
-      - libusb-dev
-      - libusb-1.0-0-dev
-      - libudev-dev
-      - python-dbus
-      - libffi-dev
-      - liblua5.2-dev
-      - libjpeg8-dev
-      - pyqt4-dev-tools
+matrix:
+  include:
+    - python: "2.7"
+      virtualenv:
+        system_site_packages: true
+      addons:
+        apt:
+          packages:
+            - libusb-dev
+            - libusb-1.0-0-dev
+            - libudev-dev
+            - libffi-dev
+            - liblua5.2-dev
+            - libjpeg8-dev
+            - python-tk
+            - python-dbus
+            - pyqt4-dev-tools
+    - python: "3.4"
+      addons:
+        apt:
+          packages:
+            - libusb-dev
+            - libusb-1.0-0-dev
+            - libudev-dev
+            - libffi-dev
+            - liblua5.2-dev
+            - libjpeg8-dev
+            - python3-dbus
+            - python3-pyqt4
+
 before_install:
+    - if [[ "$TRAVIS_PYTHON_VERSION" == "3.4" ]]; then
+        export PYTEST_QT_API=pyqt4 ;
+        ln -s /usr/lib/python3.2/dist-packages/*dbus* $VIRTUAL_ENV/lib/python$TRAVIS_PYTHON_VERSION/site-packages/ ;
+      fi
     - pip install -U setuptools pytest
     - "export DISPLAY=:99.0"
     - "sh -e /etc/init.d/xvfb start"
     - sleep 3
 install:
     - pip install lupa --install-option='--no-luajit'
-    - pip install cffi flake8 pyflakes pep8-naming
+    - pip install cffi flake8 pep8-naming flake8-putty
     - pip install -e ".[web,hidtrigger,autorotate,chdkcamera]"
     - pip install -r test-requirements.txt
     - pip install -e .
 script:
     - flake8 spreads spreadsplug tests --exclude=vendor
-    - py.test --cov spreads --cov spreadsplug -m "not guitest" tests
+    - if [[ $TRAVIS_PYTHON_VERSION != "3.4" ]]; then py.test --cov spreads --cov spreadsplug -m "not guitest" tests ; fi
 after_success: coveralls
