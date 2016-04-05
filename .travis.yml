@@ -14,6 +14,9 @@ addons:
       - liblua5.2-dev
       - libjpeg8-dev
       - pyside-tools
+      - pyqt4-dev-tools
+      - pyqt4.qsci-dev
+      - pyqt5.qsci-dev
 
 before_install:
     - pip install -U setuptools
