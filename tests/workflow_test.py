@@ -6,7 +6,7 @@ from mock import Mock
 
 import spreads.util as util
 import spreads.workflow
-from conftest import TestDriver
+from .conftest import TestDriver
 
 
 @pytest.fixture

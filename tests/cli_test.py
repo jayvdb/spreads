@@ -7,7 +7,7 @@ import spreads.cli as cli
 import spreads.main as main
 from spreads.util import DeviceException
 
-from conftest import TestDriver
+from .conftest import TestDriver
 
 
 @pytest.yield_fixture

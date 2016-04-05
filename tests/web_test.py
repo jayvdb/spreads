@@ -8,7 +8,7 @@ import jpegtran
 import mock
 import pytest
 
-from conftest import TestPluginOutput, TestPluginProcess, TestPluginProcessB
+from .conftest import TestPluginOutput, TestPluginProcess, TestPluginProcessB
 
 
 @pytest.yield_fixture
