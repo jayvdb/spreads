@@ -18,7 +18,7 @@ def mock_input():
         with patch('__builtin__.raw_input') as mock_input:
             yield mock_input
     else:
-        with patch('__builtins__.input') as mock_input:
+        with patch('builtins.input') as mock_input:
             yield mock_input
 
 
