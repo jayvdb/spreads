@@ -301,7 +301,7 @@ class ScanTailorPlugin(HookPlugin, ProcessHooksMixin):
         # Associate generated output files with our pages
         for fname in out_dir.glob('*.tif'):
             out_stem = fname.stem
-            for in_path, page in in_paths.iteritems():
+            for in_path, page in in_paths.items():
                 if Path(in_path).stem == out_stem:
                     target_fname = target_path/fname.name
                     shutil.copyfile(unicode(fname), unicode(target_fname))

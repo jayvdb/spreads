@@ -186,7 +186,7 @@ def diff_dicts(old, new):
     :rtype:     dict
     """
     out = {}
-    for key, value in old.iteritems():
+    for key, value in old.items():
         if new[key] != value:
             out[key] = new[key]
         elif isinstance(value, dict):

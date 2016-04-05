@@ -93,7 +93,7 @@ class CustomJSONEncoder(JSONEncoder):
             'out_files': [{'name': path.name,
                            'mimetype': path}
                           for path in workflow.out_files],
-            'config': {k: v for k, v in workflow.config.flatten().iteritems()
+            'config': {k: v for k, v in workflow.config.flatten().items()
                        if k in workflow.config['plugins'].get() or
                        k in ('device', 'plugins')}
         }

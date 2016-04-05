@@ -104,7 +104,7 @@ class TkConfigurationWindow(tk.Frame):
         self.selected_plugins = list(selection)
         try:
             exts = [name for name, cls in plugin.get_plugins(*selection)
-                    .iteritems() if issubclass(cls, plugin.ProcessHooksMixin)]
+                    .items() if issubclass(cls, plugin.ProcessHooksMixin)]
         except plugin.ExtensionException as e:
             exts = []
             failed_ext = e.extension

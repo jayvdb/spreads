@@ -482,7 +482,7 @@ class Workflow(object):
         plugin_classes = [
             (name, cls)
             for name, cls in plugin.get_plugins(*self.config["plugins"]
-                                                .get()).iteritems()
+                                                .get()).items()
             if not cls.__bases__ == (plugin.SubcommandHooksMixin,)]
         self._plugins = [cls(self.config) for name, cls in plugin_classes]
         self.config['plugins'] = [name for name, cls in plugin_classes]
@@ -785,7 +785,7 @@ class Workflow(object):
         def from_dict(dikt):
             raw_image = self.path/dikt['raw_image']
             processed_images = {}
-            for plugname, fpath in dikt['processed_images'].iteritems():
+            for plugname, fpath in dikt['processed_images'].items():
                 relpath = self.path/fpath
                 if relpath.exists():
                     processed_images[plugname] = relpath

@@ -248,13 +248,13 @@ def _list_plugins():
     config = app.config['default_config']
     plugins = plugin.get_plugins(*config['plugins'].get())
     return {
-        'capture': [name for name, cls in plugins.iteritems()
+        'capture': [name for name, cls in plugins.items()
                     if issubclass(cls, plugin.CaptureHooksMixin)],
-        'trigger': [name for name, cls in plugins.iteritems()
+        'trigger': [name for name, cls in plugins.items()
                     if issubclass(cls, plugin.TriggerHooksMixin)],
-        'postprocessing': [name for name, cls in plugins.iteritems()
+        'postprocessing': [name for name, cls in plugins.items()
                            if issubclass(cls, plugin.ProcessHooksMixin)],
-        'output': [name for name, cls in plugins.iteritems()
+        'output': [name for name, cls in plugins.items()
                    if issubclass(cls, plugin.OutputHooksMixin)]
     }
 
@@ -283,10 +283,10 @@ def _get_templates():
                      if section in itertools.chain(*plugins.values()) or
                      section in ('core', 'device', 'web')}
     rv = dict()
-    for plugname, options in templates.iteritems():
+    for plugname, options in templates.items():
         if options is None:
             continue
-        for key, option in options.iteritems():
+        for key, option in options.items():
             if option.selectable:
                 value = [config[plugname][key].get()]
                 value += [x for x in option.value if x not in value]
@@ -919,7 +919,7 @@ def prepare_capture(workflow):
     """ Prepare capture for the requested workflow. """
     # Check if any other workflow is active and finish, if neccessary
     logger.debug("Finishing previous workflows")
-    wfitems = Workflow.find_all(app.config['base_path'], key='id').iteritems()
+    wfitems = Workflow.find_all(app.config['base_path'], key='id').items()
     for wfid, wf in wfitems:
         if wf.status['step'] == 'capture' and wf.status['prepared']:
             if wf is workflow and not request.args.get('reset'):

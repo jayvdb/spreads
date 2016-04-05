@@ -71,7 +71,7 @@ class PDFBeadsPlugin(HookPlugin, OutputHooksMixin):
 
         meta_file = tmpdir/'metadata.txt'
         with codecs.open(unicode(meta_file), "w", "utf-8") as fp:
-            for key, value in metadata.iteritems():
+            for key, value in metadata.items():
                 if key == 'title':
                     fp.write("Title: \"{0}\"\n".format(value))
                 if key == 'creator':

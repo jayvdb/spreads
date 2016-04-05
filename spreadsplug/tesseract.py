@@ -111,7 +111,7 @@ class TesseractPlugin(HookPlugin, ProcessHooksMixin):
             # For each hOCR file, try to find a corresponding input image
             # and associate it to the image's page
             out_stem = fname.stem
-            for in_path, page in in_paths.iteritems():
+            for in_path, page in in_paths.items():
                 if in_path.stem == out_stem:
                     target_fname = target_path/fname.name
                     shutil.copyfile(unicode(fname), unicode(target_fname))
@@ -204,7 +204,7 @@ class TesseractPlugin(HookPlugin, ProcessHooksMixin):
             # Perform user-configured replacements
             if 'replacements' in self.config.keys():
                 replacements = self.config['replacements'].get()
-                for name, group in replacements.iteritems():
+                for name, group in replacements.items():
                     content = re.sub(group['regex'], group['substitution'],
                                      content, flags=get_flags(group))
         with fpath.open('w', encoding='utf-8') as fp:

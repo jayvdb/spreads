@@ -130,11 +130,11 @@ def setup_parser(config):
             # Only plugins that implement the capture or trigger hook mixins
             # and the currently active device configuration are relevant for
             # this subcommand.
-            ext_names = [name for name, cls in plugins.iteritems()
+            ext_names = [name for name, cls in plugins.items()
                          if any(issubclass(cls, mixin) for mixin in mixins)]
             ext_names.extend(extra_names)
             for ext in ext_names:
-                for key, tmpl in config.templates.get(ext, {}).iteritems():
+                for key, tmpl in config.templates.get(ext, {}).items():
                     if not should_show_argument(option,
                                                 config['plugins'].get()):
                         continue
@@ -159,7 +159,7 @@ def setup_parser(config):
             "https://github.com/DIYBookScanner/spreads/graphs/contributors\n\n"
             .format(util.get_version())))
 
-    for key, option in config.templates['core'].iteritems():
+    for key, option in config.templates['core'].items():
         if not should_show_argument(option, config['plugins'].get()):
             continue
         try:
