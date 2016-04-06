@@ -10,6 +10,8 @@ import pytest
 
 from conftest import TestPluginOutput, TestPluginProcess, TestPluginProcessB
 
+pytestmark = pytest.mark.webtest
+
 
 @pytest.yield_fixture
 def app(config, tmpdir):

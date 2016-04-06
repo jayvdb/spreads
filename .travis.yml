@@ -3,8 +3,7 @@ python:
   - "2.7"
 before_install:
     - pip install -U setuptools
-    - sudo apt-get install -qq libusb-dev libffi-dev libjpeg8-dev libudev-dev libusb-1.0-0-dev python-dbus liblua5.2-dev
-    - ln -s /usr/lib/python2.7/dist-packages/*dbus* ~/virtualenv/python2.7/lib/python2.7/site-packages/
+    - sudo apt-get install -qq libusb-dev libffi-dev libjpeg8-dev libudev-dev libusb-1.0-0-dev liblua5.2-dev
 install:
     - pip install lupa --install-option='--no-luajit'
     - pip install cffi flake8 pyflakes pep8-naming
@@ -14,5 +13,5 @@ install:
     - pip install -e .
 script:
     - flake8 spreads spreadsplug tests --exclude=vendor
-    - py.test --cov spreads --cov spreadsplug -m "not guitest" tests
+    - py.test --cov spreads --cov spreadsplug -m "not guitest and not webtest" tests
 after_success: coveralls
