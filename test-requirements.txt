@@ -1,3 +1,4 @@
+# pytest-qt is only needed for the gui tests
 pytest-qt >= 1.0
 pytest-cov >= 1.6
 pytest >= 2.5.1
