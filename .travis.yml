@@ -1,6 +1,7 @@
 language: python
 python:
   - "2.7"
+  - "pypy"
 before_install:
     - pip install -U setuptools
     - sudo apt-get install -qq libusb-dev libffi-dev libjpeg8-dev libudev-dev libusb-1.0-0-dev liblua5.2-dev
